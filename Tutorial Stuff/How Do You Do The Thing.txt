@@ -1,0 +1,55 @@
+														Jay's documentation on Github Pages AKA How I Learned to Love HTML/CSS
+
+						Tutorial made because teaching others is the best way to memorize things and because gatekeeping is fucking stupid lol
+
+1. Create repository. 
+	To get started you need to make a repo for your website. Open a normal repository and name it like the following: (Your Username).github.io. It cannot be private otherwise
+	the site will absolutely not work, it will display a 404 error and you will not be able to do anything. From there, download Github Desktop, clone the repo to your computer
+	and put it somewhere safe. You will need an IDE, I Suggest Visual Studio Code since it's pretty good for HTML/CSS work but to each their own. 
+
+2. Open your repository on your computer.
+	There should be a button somewhere on Github Desktop asking if you want to open the program in your IDE of choice/Open in VSC if you have that installed already. Open it, 
+	Copy and paste the following into your file: 
+	
+	<html>
+		<body>
+			<h1>LOREM IPSUM</h1>
+		</body>
+	</html>
+	
+	Once the following has been done, you can save the file as Index.HTML as this will be your first page on your website.
+	
+3. Once the file is saved, go back to Github Desktop and commit your changes to master branch. I strongly suggest naming your website update something relevant that indicates what was changed where incase you need to go back and edit it incase something breaks. With this done, press CTRL+P on your keyboard to push your commit to your repository.
+
+4. If you want themes, you can use Jekyll or you can just make your own.
+	Personally I reccommend ditching Jekyll all together and coding things from scratch but if you want an easier time using CSS then you can use it as it provides templates for websites.
+
+5. "I pushed my commit to the repo but nothing's changing!"
+	Github pages is slow as fucking molasses. Wait five minutes, go reward yourself with a heated pop tart and a glass of milk for the effort you put forward already and then come back and hit f5 or CTRL+R pending your preference. It takes a while to update the repo on it's end at a max of 5 minutes to a minimum of 2 minutes. 
+
+6. ReadMe.MD
+	You 100% do not have to make a ReadMe file, I just use it so people don't read my repo and go 'what the fuck' or ask me something genuinely dumb.
+	
+																		NOW HERE COMES THE *ACTUALLY* HARDER STUFF.
+						
+1. Programming
+	A base knowledge of CSS/HTML is required in order to make a website (you can't just summon one from thin air no matter how unfair that may be). I barely know either of them but I at least know enough to likely include a cheat sheet at the end of this guide, we'll see. For right now though, you should be looking into W3 Schools and researching in on your own how to make the functions work. Sometimes I break down and have to ask ChatGPT how something works because ADHD is pulling the strings and I have the memory of a small bird. People might shit on me for asking ChatGPT how to do something in programming but here's two facts for you: I'm not directly copy-pasting from the code it provides if ever AND those same people objectively get off on huffing their own farts. Don't let people act as paragons of moral aptitude because you need help every once in a while.
+
+2. File Structure
+	You have to have your HTML files in the root of your repo, I think. Don't quote me on that because I'm still figuring it out myself but based on what I'm understanding that's the case tbh. If your ReadMe.MD shows up then you've bungled something because unless that's intentional you shouldn't be seeing it. I'll likely come back and edit this portion of the information guide.
+
+3. Github Pages Bible
+	The ABSOLUTELY NO's:
+		Thou Shalt not put malware, cracks, misc illegal shit on your site lest your repo get repo-orted.
+		Thou Shalt not attempt to use Wordpress extensions on your Github Pages site, it's impossible don't even try it.
+		Thou Shalt not delete your personal repo off your computer or github unless you genuinely want to drop project entirely. Don't be a quitter, never give up.
+		Thou Shalt not leave code unoptimized especially if you're running some kind of sideloaded code into your website, don't know how to do that but don't make sketty basically.
+		Thou Shalt not give up super easy. If you get stuck on something, take a break, but don't fully quit.
+	The ABSOLUTELY YES's:
+		Thou Shalt experiment with everything in order to gain knowledge in how it works and can work for you.
+		Thou Shalt put <!--this--> in your HTML so you can remember what does what, or just generally make notes on what things are so you do not forget.
+		Thou Shalt look up tutorials or guides on things on your own time (they exist despite what people say) in order to further your knowledge on HTML or just Github Pages in general.
+		Thou Shalt look into W3Schools or a similar alternative in order to greater understand what it is you need to do.
+		Thou Shalt consider using a second free website for specific things on the side and a github pages site for the barebones basics of your website. Use 'em in tandem. Hell, that's what I do with Neocities.
+		Thou Shalt call your mother or nearest approximate loved one and ask how they're doing today, go eat some salad, take a walk outside, touch grass, and drink some water. Not really relevant to Github Pages as a whole but self-care is a good tip. If you can't care for yourself, you can't really update your website.
+		

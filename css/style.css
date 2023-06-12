@@ -1,12 +1,15 @@
 /*background color, font family*/
 body{
-    background-color:rgb(56, 69, 81);
-    font-family:Arial, Helvetica, sans-serif
+ /*   background-color:rgb(58, 69, 73);*/
+    background-image:url("bobbeee.jpg");
+    background-repeat:repeat;
+    background-size:150px;
 }
 /*Header <h1> color*/
 h1 {
     color:cyan;
     font-size: 20px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 /*<p> font stuff */
 p {

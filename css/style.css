@@ -32,6 +32,40 @@ a:hover{
     text-shadow:10px;
     color:aquamarine;
 }
+.topbar {
+    background-color: #184d49;
+    color: #fff;
+    height: 50px;
+  }
+  
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0px;
+    display: flex;
+    align-items: center;
+    text-align:center;
+    height: 100%;
+  }
+  
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 300px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
 /*
 #scrollToTopButton {
     display: none; /* Hide the button by default add thing later

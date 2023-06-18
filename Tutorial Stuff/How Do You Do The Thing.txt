@@ -17,8 +17,9 @@
 
 											Ｂｅｃａｕｓｅ ＦＵＣＫ ｇａｔｅｋｅｅｐｉｎｇ．
 
-So, you wanna make your own website and you're sick to death of places like Neocities limiting your storage size on the free plan, or you don't really want to buy an actual domain? Maybe you have your own reasons.
-Either way, this guide is formatted to help you figure it out. I'm updating this as I go, so expect changes to be made here and there where relevant.
+				So, you wanna make your own website and you're sick to death of places like Neocities limiting your storage size on the free plan, or you don't really want to buy an actual domain? Maybe you have your own reasons.
+				Either way, this guide is formatted to help you figure it out. I'm updating this as I go, so expect changes to be made here and there where relevant. Most of this information will be super obvious, but it's made
+				that way intentionally as I am someone who has issues following the most basic of steps. If you have trouble with this guide, I would strongly suggest 
 
 
 											█▄█ █▀█ █░█   █░█░█ █ █░░ █░░   █▄░█ █▀▀ █▀▀ █▀▄ ▀
@@ -26,52 +27,60 @@ Either way, this guide is formatted to help you figure it out. I'm updating this
 
 						1. Github Account
 						2. Visual Studio Code/Any IDE of your choice (If you do not know what that is, download Visual Studio Code).
-						3. Basic knowledge of HTML, CSS (optional), and JavaScript (Also optional).
+						3. Basic knowledge of HTML, CSS (optional), and JavaScript (also optional).
 						4. Github Desktop.
 						5. A Computer with an internet connection (Obviously).
+						6. A HTML-Capable web browser (I use OperaGX)
 
 
-1. Create repository. 
-	To get started you need to make a repo for your website. Open a normal repository and name it like the following: (Your Username).github.io. It cannot be private otherwise
-	the site will absolutely not work, it will display a 404 error and you will not be able to do anything. From there, download Github Desktop, clone the repo to your computer
-	and put it somewhere safe. You will need an IDE, I Suggest Visual Studio Code since it's pretty good for HTML/CSS work but to each their own. 
+	1. Create repository. 
+		To get started you need to make a repo for your website. Open a normal repository and name it like the following: (Your Username).github.io. It cannot be private otherwise
+		the site will absolutely not work, it will display a 404 error and you will not be able to do anything. From there, download Github Desktop, clone the repo to your computer
+		and put it somewhere safe. You will need an IDE, I Suggest Visual Studio Code since it's pretty good for HTML/CSS work but to each their own. 
 
-2. Open your repository on your computer.
-	There should be a button somewhere on Github Desktop asking if you want to open the program in your IDE of choice/Open in VSC if you have that installed already. Open it, 
-	Copy and paste the following into your file: 
+	2. Open your repository on your computer.
+		There should be a button somewhere on Github Desktop asking if you want to open the program in your IDE of choice/Open in VSC if you have that installed already. Open it, 
+		Copy and paste the following into your file: 
 	
-	<html>
+		<html>
+		<head>
+			<p>HELLO WORLD</p>
+		</head>
 		<body>
 			<h1>LOREM IPSUM</h1>
 		</body>
-	</html>
+		</html>
 	
-	Once the following has been done, you can save the file as Index.HTML as this will be your first page on your website.
+		Once the following has been done, you can save the file as Index.HTML as this will be your first page on your website.
 	
-3. Once the file is saved, go back to Github Desktop and commit your changes to master branch. I strongly suggest naming your website update something relevant that indicates what was changed where incase you need to go back and edit it incase something breaks. With this done, press CTRL+P on your keyboard to push your commit to your repository.
+	3. Once the file is saved, go back to Github Desktop and commit your changes to master branch. 
+		I strongly suggest naming your website update something relevant that indicates what was changed where incase you need to go back and edit it incase something breaks. 
+		With this done, press CTRL+P on your keyboard to push your commit to your repository.
 
-4. If you want themes, you can use Jekyll or you can just make your own.
-	Personally I reccommend ditching Jekyll all together and coding things from scratch but if you want an easier time using CSS then you can use it as it provides templates for websites.
+	4. If you want themes, you can use Jekyll or you can just make your own.
+		Personally I reccommend ditching Jekyll all together and coding things from scratch but if you want an easier time using CSS then you can use it as it provides templates for websites.
 
-5. "I pushed my commit to the repo but nothing's changing!"
-	Github pages is slow as fucking molasses. Wait five minutes, go reward yourself with a heated pop tart and a glass of milk for the effort you put forward already and then come back and hit f5 or CTRL+R pending your preference. It takes a while to update the repo on it's end at a max of 5 minutes to a minimum of 2 minutes. 
+	5. "I pushed my commit to the repo but nothing's changing!"
+		Github pages is slow as fucking molasses. Wait five minutes, go reward yourself with a heated pop tart and a glass of milk for the effort you put forward already and then come back
+		and hit f5 or CTRL+R pending your preference. It takes a while to update the repo on it's end at a max of 5 minutes to a minimum of 2 minutes. 
 
-6. ReadMe.MD
-	You 100% do not have to make a ReadMe file, I just use it so people don't read my repo and go 'what the fuck' or ask me something genuinely dumb.
-	
+	6. ReadMe.MD
+		What it is: A file that shows up on your repo as a descriptor for what it exactly is incase other people run across it while examining your Github account. 
+		Absolutely optional, you do not have to make this.
+
 
 											█░█ █▀▀ █▀█ █▀▀ ▀ █▀   ▀█▀ █░█ █▀▀   █░█ ▄▀█ █▀█ █▀▄ █▀▀ █▀█   █▀ ▀█▀ █░█ █▀▀ █▀▀
 											█▀█ ██▄ █▀▄ ██▄ ░ ▄█   ░█░ █▀█ ██▄   █▀█ █▀█ █▀▄ █▄▀ ██▄ █▀▄   ▄█ ░█░ █▄█ █▀░ █▀░
-1. Programming
-	A base knowledge of CSS/HTML is required in order to make a website (you can't just summon one from thin air no matter how unfair that may be).
-	I barely know either of them but I at least know enough to likely include a cheat sheet at the end of this guide, we'll see. For right now though, 
-	you should be looking into W3 Schools and researching in on your own how to make the functions work. Sometimes I break down and have to ask ChatGPT 
-	how something works because ADHD is pulling the strings and I have the memory of a small bird. People might shit on me for asking ChatGPT how to do 
-	something in programming but here's two facts for you: I'm not directly copy-pasting from the code it provides if ever AND those same people objectively
-	get off on huffing their own farts. Don't let people act as paragons of moral aptitude because you need help every once in a while.
+	1. Programming
+		A base knowledge of CSS/HTML is required in order to make a website (you can't just summon one from thin air no matter how unfair that may be).
+		I barely know either of them but I at least know enough to likely include a cheat sheet at the end of this guide, we'll see. For right now though, 
+		you should be looking into W3 Schools and researching in on your own how to make the functions work. Sometimes I break down and have to ask ChatGPT 
+		how something works because ADHD is pulling the strings and I have the memory of a small bird. People might shit on me for asking ChatGPT how to do 
+		something in programming but here's two facts for you: I'm not directly copy-pasting from the code it provides if ever AND those same people objectively
+		get off on huffing their own farts. Don't let people act as paragons of moral aptitude because you need help every once in a while.
 
-2. File Structure
-	In your repo, you'll notice that over time your file structure is out of whack. Here's how you sort that out.
+	2. File Structure
+		In your repo, you'll notice that over time your file structure is out of whack. Here's how you sort that out. 
 
 	ROOT-
 		INDEX.HTML
@@ -83,9 +92,37 @@ Either way, this guide is formatted to help you figure it out. I'm updating this
 			PAGE.JS (if applicable)
 			IMAGES_ON_YOUR_WEBSITE.PNG
 
-	Sometimes your file tree may break, it's all up to you to play around and figure it out on your own but the above is the general file structure of a github pages site.
+	Sometimes your file tree may break, it's all up to you to play around and figure it out on your own but the above is the general file structure of the github pages site I use. You want to keep your 
+	files and folders in one-level super accessable areas and NEVER EVER move your index.html file unless you want your entire site to break.
 
-3. Github Pages Bible
+	3. Programming your own CSS layout.
+		CSS stands for Cascading Style Sheet. It is what dictates your webpage's layout and structure. You can find thousands upon thousands of guides explaining how to use this, but if you want a webpage
+		that doesn't look like an old BBForum then you should use this to style your site. This is 100% optional, but highly reccommended if you want something that looks coherent and good.
+
+	4. JavaScript
+		JavaScript (Not to be confused with Java, like Minecraft Java) is what you'll need if you wanna do fancy stuff like text scrolling on your tab, music players, etc. Just like CSS, it is 100% optional,
+		but if you want to go all out and make something interesting/neato burrito then I'd strongly reccommend using this.
+
+													█ █▀▄▀█ █▀█ █▀█ █▀█ ▀█▀ ▄▀█ █▄░█ ▀█▀ █ █
+													█ █░▀░█ █▀▀ █▄█ █▀▄ ░█░ █▀█ █░▀█ ░█░ ▄ ▄
+
+	1. You cannot use external media.
+		If you want to show a funny youtube embed into your website, or link out to a spotify playlist or something akin those lines? Guess what, you can't. Github has a content restriction on external media. In short:
+		this means you need to download the thing you want to display on the site and save it to your repo in it's own folder. This sucks, and can make or break specific site ideas, but it is something you should be 
+		made actively aware of before getting into all of this.
+
+	2. Do not forget to name your commits.
+		When you make a change to your page, Github Desktop will ask if you want to push your change to 'master' or your main branch. 
+
+	3. Keep local backups.
+		If you're intending to make a huge change to your website page, before you alter your code in any way: Please copy your HTML/CSS/ETC. file and put it somewhere safe as a backup. Yes, github can roll back
+		changes, but it is genuinely easier to just slap a copy of a pre-existing version in place of where the file was before.
+
+	4. Your Github Repo has to be public.
+		When I found this out, I lost my mind. I almost considered backing out because nothing's scarier than having your work in progress be made public for all to see. I kept the path and kept working on
+		my website, finding out that I can just use my browser to preview all changes before posting them.
+
+ Github Pages Bible
 	The ABSOLUTELY NO's:
 		Thou Shalt not put malware, cracks, misc illegal shit on your site lest your repo get repo-orted.
 		Thou Shalt not attempt to use Wordpress extensions on your Github Pages site, it's impossible don't even try it.
@@ -99,9 +136,3 @@ Either way, this guide is formatted to help you figure it out. I'm updating this
 		Thou Shalt look into W3Schools or a similar alternative in order to greater understand what it is you need to do.
 		Thou Shalt consider using a second free website for specific things on the side and a github pages site for the barebones basics of your website. Use 'em in tandem. Hell, that's what I do with Neocities.
 		Thou Shalt call your mother or nearest approximate loved one and ask how they're doing today, go eat some salad, take a walk outside, touch grass, and drink some water. Not really relevant to Github Pages as a whole but self-care is a good tip. If you can't care for yourself, you can't really update your website.
-
-
-
-											█ █▀▄▀█ █▀█ █▀█ █▀█ ▀█▀ ▄▀█ █▄░█ ▀█▀ █ █
-											█ █░▀░█ █▀▀ █▄█ █▀▄ ░█░ █▀█ █░▀█ ░█░ ▄ ▄
-

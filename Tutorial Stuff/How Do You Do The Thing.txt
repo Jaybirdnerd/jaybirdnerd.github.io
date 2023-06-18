@@ -1,6 +1,35 @@
-														Jay's documentation on Github Pages AKA How I Learned to Love HTML/CSS
 
-						Tutorial made because teaching others is the best way to memorize things and because gatekeeping is fucking stupid lol
+
+
+							░░░░░██╗░█████╗░██╗░░░██╗██████╗░██╗██████╗░██████╗░██╗░██████╗  ░██████╗░██╗░░░██╗██╗██████╗░███████╗
+							░░░░░██║██╔══██╗╚██╗░██╔╝██╔══██╗██║██╔══██╗██╔══██╗╚█║██╔════╝  ██╔════╝░██║░░░██║██║██╔══██╗██╔════╝
+							░░░░░██║███████║░╚████╔╝░██████╦╝██║██████╔╝██║░░██║░╚╝╚█████╗░  ██║░░██╗░██║░░░██║██║██║░░██║█████╗░░
+							██╗░░██║██╔══██║░░╚██╔╝░░██╔══██╗██║██╔══██╗██║░░██║░░░░╚═══██╗  ██║░░╚██╗██║░░░██║██║██║░░██║██╔══╝░░
+							╚█████╔╝██║░░██║░░░██║░░░██████╦╝██║██║░░██║██████╔╝░░░██████╔╝  ╚██████╔╝╚██████╔╝██║██████╔╝███████╗
+							░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═════╝░╚═╝╚═╝░░╚═╝╚═════╝░░░░╚═════╝░  ░╚═════╝░░╚═════╝░╚═╝╚═════╝░╚══════╝
+
+							████████╗░█████╗░  ░██████╗░██╗████████╗██╗░░██╗██╗░░░██╗██████╗░  ██████╗░░█████╗░░██████╗░███████╗░██████╗
+							╚══██╔══╝██╔══██╗  ██╔════╝░██║╚══██╔══╝██║░░██║██║░░░██║██╔══██╗  ██╔══██╗██╔══██╗██╔════╝░██╔════╝██╔════╝
+							░░░██║░░░██║░░██║  ██║░░██╗░██║░░░██║░░░███████║██║░░░██║██████╦╝  ██████╔╝███████║██║░░██╗░█████╗░░╚█████╗░
+							░░░██║░░░██║░░██║  ██║░░╚██╗██║░░░██║░░░██╔══██║██║░░░██║██╔══██╗  ██╔═══╝░██╔══██║██║░░╚██╗██╔══╝░░░╚═══██╗
+							░░░██║░░░╚█████╔╝  ╚██████╔╝██║░░░██║░░░██║░░██║╚██████╔╝██████╦╝  ██║░░░░░██║░░██║╚██████╔╝███████╗██████╔╝
+							░░░╚═╝░░░░╚════╝░  ░╚═════╝░╚═╝░░░╚═╝░░░╚═╝░░╚═╝░╚═════╝░╚═════╝░  ╚═╝░░░░░╚═╝░░╚═╝░╚═════╝░╚══════╝╚═════╝░
+
+											Ｂｅｃａｕｓｅ ＦＵＣＫ ｇａｔｅｋｅｅｐｉｎｇ．
+
+So, you wanna make your own website and you're sick to death of places like Neocities limiting your storage size on the free plan, or you don't really want to buy an actual domain? Maybe you have your own reasons.
+Either way, this guide is formatted to help you figure it out. I'm updating this as I go, so expect changes to be made here and there where relevant.
+
+
+											█▄█ █▀█ █░█   █░█░█ █ █░░ █░░   █▄░█ █▀▀ █▀▀ █▀▄ ▀
+											░█░ █▄█ █▄█   ▀▄▀▄▀ █ █▄▄ █▄▄   █░▀█ ██▄ ██▄ █▄▀ ▄
+
+						1. Github Account
+						2. Visual Studio Code/Any IDE of your choice (If you do not know what that is, download Visual Studio Code).
+						3. Basic knowledge of HTML, CSS (optional), and JavaScript (Also optional).
+						4. Github Desktop.
+						5. A Computer with an internet connection (Obviously).
+
 
 1. Create repository. 
 	To get started you need to make a repo for your website. Open a normal repository and name it like the following: (Your Username).github.io. It cannot be private otherwise
@@ -30,13 +59,31 @@
 6. ReadMe.MD
 	You 100% do not have to make a ReadMe file, I just use it so people don't read my repo and go 'what the fuck' or ask me something genuinely dumb.
 	
-																		NOW HERE COMES THE *ACTUALLY* HARDER STUFF.
-						
+
+											█░█ █▀▀ █▀█ █▀▀ ▀ █▀   ▀█▀ █░█ █▀▀   █░█ ▄▀█ █▀█ █▀▄ █▀▀ █▀█   █▀ ▀█▀ █░█ █▀▀ █▀▀
+											█▀█ ██▄ █▀▄ ██▄ ░ ▄█   ░█░ █▀█ ██▄   █▀█ █▀█ █▀▄ █▄▀ ██▄ █▀▄   ▄█ ░█░ █▄█ █▀░ █▀░
 1. Programming
-	A base knowledge of CSS/HTML is required in order to make a website (you can't just summon one from thin air no matter how unfair that may be). I barely know either of them but I at least know enough to likely include a cheat sheet at the end of this guide, we'll see. For right now though, you should be looking into W3 Schools and researching in on your own how to make the functions work. Sometimes I break down and have to ask ChatGPT how something works because ADHD is pulling the strings and I have the memory of a small bird. People might shit on me for asking ChatGPT how to do something in programming but here's two facts for you: I'm not directly copy-pasting from the code it provides if ever AND those same people objectively get off on huffing their own farts. Don't let people act as paragons of moral aptitude because you need help every once in a while.
+	A base knowledge of CSS/HTML is required in order to make a website (you can't just summon one from thin air no matter how unfair that may be).
+	I barely know either of them but I at least know enough to likely include a cheat sheet at the end of this guide, we'll see. For right now though, 
+	you should be looking into W3 Schools and researching in on your own how to make the functions work. Sometimes I break down and have to ask ChatGPT 
+	how something works because ADHD is pulling the strings and I have the memory of a small bird. People might shit on me for asking ChatGPT how to do 
+	something in programming but here's two facts for you: I'm not directly copy-pasting from the code it provides if ever AND those same people objectively
+	get off on huffing their own farts. Don't let people act as paragons of moral aptitude because you need help every once in a while.
 
 2. File Structure
-	You have to have your HTML files in the root of your repo, I think. Don't quote me on that because I'm still figuring it out myself but based on what I'm understanding that's the case tbh. If your ReadMe.MD shows up then you've bungled something because unless that's intentional you shouldn't be seeing it. I'll likely come back and edit this portion of the information guide.
+	In your repo, you'll notice that over time your file structure is out of whack. Here's how you sort that out.
+
+	ROOT-
+		INDEX.HTML
+		README.MD
+		INDEX.CSS
+		WEBSITE FOLDER-
+			PAGE.HTML
+			PAGE.CSS
+			PAGE.JS (if applicable)
+			IMAGES_ON_YOUR_WEBSITE.PNG
+
+	Sometimes your file tree may break, it's all up to you to play around and figure it out on your own but the above is the general file structure of a github pages site.
 
 3. Github Pages Bible
 	The ABSOLUTELY NO's:
@@ -52,4 +99,9 @@
 		Thou Shalt look into W3Schools or a similar alternative in order to greater understand what it is you need to do.
 		Thou Shalt consider using a second free website for specific things on the side and a github pages site for the barebones basics of your website. Use 'em in tandem. Hell, that's what I do with Neocities.
 		Thou Shalt call your mother or nearest approximate loved one and ask how they're doing today, go eat some salad, take a walk outside, touch grass, and drink some water. Not really relevant to Github Pages as a whole but self-care is a good tip. If you can't care for yourself, you can't really update your website.
-		
+
+
+
+											█ █▀▄▀█ █▀█ █▀█ █▀█ ▀█▀ ▄▀█ █▄░█ ▀█▀ █ █
+											█ █░▀░█ █▀▀ █▄█ █▀▄ ░█░ █▀█ █░▀█ ░█░ ▄ ▄
+

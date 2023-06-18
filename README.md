@@ -6,4 +6,4 @@ Github Pages, a lot of patience, and some trial and error. You should look up a 
 
 # Can I contact you to make a website like this for me?
 
-No.
+No. There's a file in the repo that details how to make a website, go read that.

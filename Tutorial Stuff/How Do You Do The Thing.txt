@@ -17,9 +17,9 @@
 
 											Ｂｅｃａｕｓｅ ＦＵＣＫ ｇａｔｅｋｅｅｐｉｎｇ．
 
-				So, you wanna make your own website and you're sick to death of places like Neocities limiting your storage size on the free plan, or you don't really want to buy an actual domain? Maybe you have your own reasons.
-				Either way, this guide is formatted to help you figure it out. I'm updating this as I go, so expect changes to be made here and there where relevant. Most of this information will be super obvious, but it's made
-				that way intentionally as I am someone who has issues following the most basic of steps. If you have trouble with this guide, I would strongly suggest 
+			So, you wanna make your own website and you're sick to death of places like Neocities limiting your storage size on the free plan, or you don't really want to buy an actual domain? Maybe you have your own reasons.
+			Either way, this guide is formatted to help you figure it out. I'm updating this as I go, so expect changes to be made here and there where relevant. Most of this information will be super obvious, but it's made
+			that way intentionally as I am someone who has issues following the most basic of steps. If you have trouble with this guide, I would strongly suggest 
 
 
 											█▄█ █▀█ █░█   █░█░█ █ █░░ █░░   █▄░█ █▀▀ █▀▀ █▀▄ ▀
@@ -44,10 +44,10 @@
 	
 		<html>
 		<head>
-			<p>HELLO WORLD</p>
+			<h1>LOREM IPSUM</h1>
 		</head>
 		<body>
-			<h1>LOREM IPSUM</h1>
+			<h2>LOREM IPSUM</h2>
 		</body>
 		</html>
 	

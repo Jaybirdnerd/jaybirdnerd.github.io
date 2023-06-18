@@ -103,6 +103,7 @@
 		JavaScript (Not to be confused with Java, like Minecraft Java) is what you'll need if you wanna do fancy stuff like text scrolling on your tab, music players, etc. Just like CSS, it is 100% optional,
 		but if you want to go all out and make something interesting/neato burrito then I'd strongly reccommend using this.
 
+
 													█ █▀▄▀█ █▀█ █▀█ █▀█ ▀█▀ ▄▀█ █▄░█ ▀█▀ █ █
 													█ █░▀░█ █▀▀ █▄█ █▀▄ ░█░ █▀█ █░▀█ ░█░ ▄ ▄
 
@@ -122,17 +123,22 @@
 		When I found this out, I lost my mind. I almost considered backing out because nothing's scarier than having your work in progress be made public for all to see. I kept the path and kept working on
 		my website, finding out that I can just use my browser to preview all changes before posting them.
 
- Github Pages Bible
-	The ABSOLUTELY NO's:
-		Thou Shalt not put malware, cracks, misc illegal shit on your site lest your repo get repo-orted.
-		Thou Shalt not attempt to use Wordpress extensions on your Github Pages site, it's impossible don't even try it.
-		Thou Shalt not delete your personal repo off your computer or github unless you genuinely want to drop project entirely. Don't be a quitter, never give up.
-		Thou Shalt not leave code unoptimized especially if you're running some kind of sideloaded code into your website, don't know how to do that but don't make sketty basically.
-		Thou Shalt not give up super easy. If you get stuck on something, take a break, but don't fully quit.
-	The ABSOLUTELY YES's:
-		Thou Shalt experiment with everything in order to gain knowledge in how it works and can work for you.
-		Thou Shalt put <!--this--> in your HTML so you can remember what does what, or just generally make notes on what things are so you do not forget.
-		Thou Shalt look up tutorials or guides on things on your own time (they exist despite what people say) in order to further your knowledge on HTML or just Github Pages in general.
-		Thou Shalt look into W3Schools or a similar alternative in order to greater understand what it is you need to do.
-		Thou Shalt consider using a second free website for specific things on the side and a github pages site for the barebones basics of your website. Use 'em in tandem. Hell, that's what I do with Neocities.
-		Thou Shalt call your mother or nearest approximate loved one and ask how they're doing today, go eat some salad, take a walk outside, touch grass, and drink some water. Not really relevant to Github Pages as a whole but self-care is a good tip. If you can't care for yourself, you can't really update your website.
+
+									█████▀██████████████████████████████████████████████▀███████████████████████████████████████████
+									█─▄▄▄▄█▄─▄█─▄─▄─█─█─█▄─██─▄█▄─▄─▀███▄─▄▄─██▀▄─██─▄▄▄▄█▄─▄▄─█─▄▄▄▄███▄─▄─▀█▄─▄█▄─▄─▀█▄─▄███▄─▄▄─█
+									█─██▄─██─████─███─▄─██─██─███─▄─▀████─▄▄▄██─▀─██─██▄─██─▄█▀█▄▄▄▄─████─▄─▀██─███─▄─▀██─██▀██─▄█▀█
+									▀▄▄▄▄▄▀▄▄▄▀▀▄▄▄▀▀▄▀▄▀▀▄▄▄▄▀▀▄▄▄▄▀▀▀▀▄▄▄▀▀▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▀▀▄▄▄▄▀▀▄▄▄▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀
+
+		The ABSOLUTELY NO's:
+			Thou Shalt not put malware, cracks, misc illegal shit on your site lest your repo get repo-orted.
+			Thou Shalt not attempt to use Wordpress extensions on your Github Pages site, it's impossible don't even try it.
+			Thou Shalt not delete your personal repo off your computer or github unless you genuinely want to drop project entirely. Don't be a quitter, never give up.
+			Thou Shalt not leave code unoptimized especially if you're running some kind of sideloaded code into your website, don't know how to do that but don't make sketty basically.
+			Thou Shalt not give up super easy. If you get stuck on something, take a break, but don't fully quit.
+		The ABSOLUTELY YES's:
+			Thou Shalt experiment with everything in order to gain knowledge in how it works and can work for you.
+			Thou Shalt put <!--this--> in your HTML so you can remember what does what, or just generally make notes on what things are so you do not forget.
+			Thou Shalt look up tutorials or guides on things on your own time (they exist despite what people say) in order to further your knowledge on HTML or just Github Pages in general.
+			Thou Shalt look into W3Schools or a similar alternative in order to greater understand what it is you need to do.
+			Thou Shalt consider using a second free website for specific things on the side and a github pages site for the barebones basics of your website. Use 'em in tandem. Hell, that's what I do with Neocities.
+			Thou Shalt call your mother or nearest approximate loved one and ask how they're doing today, go eat some salad, take a walk outside, touch grass, and drink some water. Not really relevant to Github Pages as a whole but self-care is a good tip. If you can't care for yourself, you can't really update your website.

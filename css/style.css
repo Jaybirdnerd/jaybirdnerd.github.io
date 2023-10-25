@@ -1,9 +1,12 @@
-/*background color, font family*/
+/*background color*/
 body{
+    color: greenyellow;
+    font-family: 'Pixelop', sans-serif;
     background-color:rgb(58, 69, 73);
     background-repeat:repeat;
     background-size:150px;
-    background-image: url('Images/diagonal-stripes.svg');
+    background-image: url('background/diagonal-stripes.svg');
+    cursor: url('cursors/alien.gif'), auto;
 }
 
 /*<p> font stuff */
@@ -18,6 +21,11 @@ body{
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Pixelary';
+  src: url('fonts/PixelaryRegular.woff') format('woff'),
+    url('fonts/PixelaryRegular.woff2') format('woff2')
+}
 
 p {
     font-size: 20px;
@@ -31,38 +39,14 @@ a{
     font-size: 16px;
     text-decoration: none;
 }
-a:visited{
-    color:darkblue;
-}
-a:hover{
-    text-shadow:10px;
-    color:aquamarine;
-}
-/*border boxes */
-.image-container {
-  position: relative;
-}
-
-body {
-  color: rgb(0, 255, 128);
-  font-family: 'Pixelop', sans-serif;
-}
 
 h1, h2, h3 {
-  size: 20px;
+  size: 30px;
   color:greenyellow;
+  text-shadow:greenyellow;
   font-family: 'Pixelop', serif;
 }
 
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-}
 /* This entire subsection is me testing floatercode for fun soz future me */
 /*.image {
   width: 50px;
@@ -91,49 +75,29 @@ body {
   }
 }*/
 
-/* Variations on above code for other neato effect testing*/
-
-.image {
-  width: 50px;
-  height: 50px;
-  background-image: url('Icons/warning.ico');
-  position: absolute;
-  bottom: 0;
-  left: 1050;
-  animation: fly-up 5s linear infinite;
-  animation-delay: 0s, 1s, 2s; /* Delay for each image */
-}
-
-.image1 { left: 40%; }
-.image2 { left: 60%; }
-.image3 { left: 50%; }
-
-@keyframes fly-up {
-  0% {
-      opacity: 0;
-      bottom: 0;
-      left: 0;
-      right: 0; 
-  }
-  100% {
-    left: 1000;
-    right:900;
-    opacity: 2;
-      bottom: 150vh;
-  }
-}
 /* Item Box Code */
 .info {
   float: left;
   margin-left: 20;
-  margin-top: 130;
+  margin-top: 50;
   padding-right: 40;
   width: 350px;
-  height: 620px;
+  height: 610px;
   border: 2px solid;
   background-color:rgb(65, 85, 94);
 }
-
+.mainbox {
+  white-space: break-spaces;
+  text-align: center;
+  overflow: scroll;
+  margin-left: 500;
+  padding left: 20;
+  padding-right: 40;
+  width: 950px;
+  height: 870px;
+  border: 2px solid;
+  background-color:#304e41;
+}
 /* Place the navbar at the bottom of the page, and make it stick */
 .navbar {
   background-color: #333;
@@ -147,7 +111,7 @@ body {
 .navbar a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #00c3ff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

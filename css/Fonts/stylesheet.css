@@ -1,0 +1,19 @@
+/* Holdover from Font Kit stuff.*/
+
+@font-face {
+    font-family: 'Pixelary';
+    src: url('PixelaryRegular.woff2') format('woff2'),
+        url('PixelaryRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Pixelop', sans-serif;
+  }
+  
+  h1, h2, h3 {
+    color:greenyellow;
+    font-family: 'Pixelop', serif;
+  }

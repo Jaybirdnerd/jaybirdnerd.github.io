@@ -3,29 +3,29 @@ body{
     background-color:rgb(58, 69, 73);
     background-repeat:repeat;
     background-size:150px;
-    background-image: url('diagonal-stripes.svg');
-}
-/*Background SVG file*/
-.element {
-  background-image: url('diagonal-stripes.svg');
-  /* Other background properties */
+    background-image: url('Images/diagonal-stripes.svg');
 }
 
-/*Header <h1> color*/
-h1 {
-    color:cyan;
-    font-size: 20px;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
 /*<p> font stuff */
+
+
+@font-face {
+  font-family: 'Pixelop';
+  src: url('Fonts/PixelOperator.woff') format('woff'),
+      url('Fonts/PixelaryOperator.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 p {
     font-size: 20px;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:'Pixelop' sans-serif;
 }
 small{
     font-size:10px;
 }
-
 a{
     color:darkcyan;
     font-size: 16px;
@@ -42,6 +42,165 @@ a:hover{
 .image-container {
   position: relative;
 }
+
+body {
+  color: rgb(0, 255, 128);
+  font-family: 'Pixelop', sans-serif;
+}
+
+h1, h2, h3 {
+  size: 20px;
+  color:greenyellow;
+  font-family: 'Pixelop', serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+/* This entire subsection is me testing floatercode for fun soz future me */
+/*.image {
+  width: 50px;
+  height: 50px;
+  background-image: url('Icons/warning.ico');
+  position: absolute;
+  bottom: 0;
+  left: 200;
+  animation: fly-up 60s linear infinite;
+}
+
+.image1 { left: 90%; }
+.image2 { right:80%;}
+.image3 { left: 20%;}
+.image4 { right: 30%;}
+
+@keyframes fly-up {
+  0% {
+      bottom: 0;
+  }
+  0% {
+      left: 900;
+  }
+  100% {
+      bottom: 200vh;
+  }
+}*/
+
+/* Variations on above code for other neato effect testing*/
+
+.image {
+  width: 50px;
+  height: 50px;
+  background-image: url('Icons/warning.ico');
+  position: absolute;
+  bottom: 0;
+  left: 1050;
+  animation: fly-up 5s linear infinite;
+  animation-delay: 0s, 1s, 2s; /* Delay for each image */
+}
+
+.image1 { left: 40%; }
+.image2 { left: 60%; }
+.image3 { left: 50%; }
+
+@keyframes fly-up {
+  0% {
+      opacity: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; 
+  }
+  100% {
+    left: 1000;
+    right:900;
+    opacity: 2;
+      bottom: 150vh;
+  }
+}
+/* Item Box Code */
+.info {
+  float: left;
+  margin-left: 20;
+  margin-top: 130;
+  padding-right: 40;
+  width: 350px;
+  height: 620px;
+  border: 2px solid;
+  background-color:rgb(65, 85, 94);
+}
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.navbar a:hover {
+  background-color: #16e8be;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.navbar a.active {
+  background-color: #304e41;
+  color: rgb(132, 200, 83);
+}
+
+/* Draggable Stuff */
+
+
+/* Typewriter effect css */
+
+/*.typewriter {
+  text-align: center;
+}
+
+#text {
+  font-size: 24px;
+  border-right: 2px solid #333;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 1s steps(40) infinite, blink-caret 1s step-end infinite;
+}
+
+@keyframes typewriter {
+  from {
+      width: 0;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+      border-color: transparent;
+  }
+  50% {
+      border-color: #333;
+  }
+}
+*/
 
 /*.border-image {
   position: absolute;

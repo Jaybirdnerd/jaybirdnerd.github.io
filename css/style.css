@@ -98,6 +98,17 @@ h1, h2, h3 {
   border: 2px solid;
   background-color:#304e41;
 }
+
+.warnbox {
+  
+  text-align: match-parent;
+  overflow: auto;
+  margin-left: 50;
+  width: 950px;
+  height: 570px;
+  border: 2px solid;
+  background-color:#304e41;
+}
 /* Place the navbar at the bottom of the page, and make it stick */
 .navbar {
   background-color: #333;
@@ -130,41 +141,9 @@ h1, h2, h3 {
   color: rgb(132, 200, 83);
 }
 
-/* Draggable Stuff */
+/* Interactable/Button Code */
 
 
-/* Typewriter effect css */
-
-/*.typewriter {
-  text-align: center;
-}
-
-#text {
-  font-size: 24px;
-  border-right: 2px solid #333;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typewriter 1s steps(40) infinite, blink-caret 1s step-end infinite;
-}
-
-@keyframes typewriter {
-  from {
-      width: 0;
-  }
-  to {
-      width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from, to {
-      border-color: transparent;
-  }
-  50% {
-      border-color: #333;
-  }
-}
-*/
 
 /*.border-image {
   position: absolute;

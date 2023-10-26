@@ -2,28 +2,47 @@
 <hmtl>
     <head>
       <!--TO DO: 
-      1.Content Warning/NOT FOR KIDS button
+      1.Create clickable buttons inside of a box with a disclaimer.
       2. More graphics on the page
-      3. Work on the CSS side of this.-->
+      3. Work on the CSS side of this.
+      4. Fix the tab icon.
+      5. textscroll.js seems like it ties into the tabbing text-->
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="icon" href="Images/cpu.ico" type="image/x-icon">
+        <link rel="icon" href="cpu.ico" type="image/x-icon">
         <title>You Should Not See This, If You Do Contact Me.</title> <!--Backup Tab Title-->
     </head>
     <body>
-      
-        <!--Topbar needs done-->
-            <!--End Topbar Links Area-->
-        <center><h1>Welcome to the inside of my head.</h1></center>
-        <center><p> This page is a test to see if Github Pages works for me.</p>
-        <p>For those of you who follow my Neocities website, this website will work in tandem
-            with that site as well.</p>
-            <p>Expect everything including this page to be subject to heavy change in the future.</p>
-            <!--Below is the spinning gif of Bob from Animal Crossing. It's being used as a pagedoll for image testing. Ideally update with a better icon later.-->
-            <img src="Images/speencat.gif" 
-            style="position:fixed; Right:0px; Left:0px; Bottom:0px"; 
-            width="200"
-            height="200"> 
-            <script src="textscroll.js"></script> <!--Scrolling Text-->
+<center>
+    <div class="warnbox">
+        <h1>
+            Welcome to my Website!
+        </h1>
+        <p>
+            Inside you'll find my personal works, contributions, and info about myself and my commissions. Have a look around and 
+            take your time checking the place out. 
+        </p>
+        <img src="Images/warning.png" width="30" height="30">
+        <p style="color: red;">
+            Warning, this site is NSFW due to the nature of my artwork and projects. It is not intended for anyone under the age
+            of 18.
+        </p>
+</center>
+        </div>
+        <!--Below is the spinning gif of Bob from Animal Crossing. It's being used as a pagedoll for image testing. Ideally update with a better icon later.-->
+        <!--Commented out: <img src="Images/speencat.gif" width="200" height="200"> -->
+
+        <!--textscroll.js seems to operate the tab scrolling.-->
+        <script src="textscroll.js"></script>
+        <!--Bottom Navbar-->
+        <div class="navbar">
+            <a href="https://jaybirdnerd.github.io" class="active">Home</a>
+            <a href="https://jaybirdnerd.github.io">News</a>
+            <a href="https://jaybirdnerd.github.io">Contact</a>
+            <a href="https://jaybirdnerd.github.io">Commissions</a>
+            <a href="https://jaybirdnerd.github.io">About</a>
+            <a href="https://aviandoorstep.neocities.org">Avian Doorstep</a>
+            <a href="https://jaybirdnerd.github.io">Projects</a>
+          </div>
     </body>
 </hmtl>
 

@@ -1,17 +1,10 @@
 const phrases = [
     "Hello, world!",
-    "Keep it simple.",
-    "Dream big, achieve bigger.",
-    "Stay curious, stay learning.",
-    "Embrace the journey, not just the destination.",
-    "The sky is the limit.",
-    "Make it happen.",
-    "Believe in yourself.",
-    "Stay focused and never give up.",
-    "Find joy in the little things.",
-    "Live life to the fullest.",
-    "Choose kindness.",
-    "Smile, it's contagious.",
+    "Smile. Tomorrow will be worse",
+    "Dying is easy, comedy is hard",
+    "It’s cruel…and unusual",
+    "Sometimes you drink the milk; sometimes the milk drinks you",
+    "If stupidity got us into this mess, why can't it get us out?",
   ];
   
   function generateRandomPhrase() {

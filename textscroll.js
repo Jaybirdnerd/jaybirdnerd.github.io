@@ -1,4 +1,4 @@
-var titleText = "Welcome to my site! ";
+var titleText = "Commissions, Code, Projects and Progress! - Jaybirdnerd ";
 var scrollSpeed = 100; // Adjust scroll speed (milliseconds)
 
 function scrollTitle() {

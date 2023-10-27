@@ -60,6 +60,18 @@ h1, h2, h3 {
 
 /* Images */
 
+.logo{
+margin-left: 580px;
+padding-top: 60px;
+}
+
+.watermark{
+  
+  margin-left: 230px;
+  height: 80px;
+  width: auto;
+}
+
 .trangle{
   float: left;
   height: 50px;
@@ -126,7 +138,6 @@ h1, h2, h3 {
   word-wrap: break-word;
   text-align: match-parent;
   overflow: auto;
-  margin-top: 10%;
   margin-left: 50;
   padding-left: 15px;
   padding-right: 15px;

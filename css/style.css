@@ -76,6 +76,7 @@ padding-top: 60px;
   height: 50px;
   width: auto;
 }
+
 .trangle2{
   float: right;
   height: 50px;
@@ -98,7 +99,7 @@ padding-top: 60px;
   text-align: center;
   overflow: scroll;
   margin-left: 500;
-  padding left: 20;
+  padding-left: 20;
   padding-right: 40;
   width: 950px;
   height: 870px;

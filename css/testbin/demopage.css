@@ -1,0 +1,93 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+/*
+.glitch-container {
+    position: relative;
+    font-size: 4em;
+    color: white;
+}
+
+.glitch-text {
+    position: relative;
+    animation: glitch 1s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: 'WELCOME HOME';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    background: black;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitch 1s infinite;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        clip: rect(2px, 9999px, 44px, 0);
+        transform: skew(0.5deg);
+    }
+    10% {
+        clip: rect(12px, 9999px, 56px, 0);
+        transform: skew(-0.5deg);
+    }
+    20% {
+        clip: rect(36px, 9999px, 88px, 0);
+        transform: skew(1.5deg);
+    }
+    30% {
+        clip: rect(22px, 9999px, 75px, 0);
+        transform: skew(-1.5deg);
+    }
+    40% {
+        clip: rect(62px, 9999px, 82px, 0);
+        transform: skew(0.5deg);
+    }
+    50% {
+        clip: rect(22px, 9999px, 88px, 0);
+        transform: skew(-0.5deg);
+    }
+    60% {
+        clip: rect(42px, 9999px, 90px, 0);
+        transform: skew(0.5deg);
+    }
+    70% {
+        clip: rect(26px, 9999px, 84px, 0);
+        transform: skew(-0.5deg);
+    }
+    80% {
+        clip: rect(56px, 9999px, 66px, 0);
+        transform: skew(1.5deg);
+    }
+    90% {
+        clip: rect(16px, 9999px, 96px, 0);
+        transform: skew(-1.5deg);
+    }
+    100% {
+        clip: rect(44px, 9999px, 76px, 0);
+        transform: skew(0.5deg);
+    }
+}
+*?

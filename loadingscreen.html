@@ -50,11 +50,10 @@
       width: 100%;
       height: 100%;
       background-color: black;
-      opacity: 0;
+      opacity: 0; /* Initially transparent */
       pointer-events: none;
       transition: opacity 1s ease-in-out; /* Smooth fade effect */
       z-index: 9999; /* Ensure it appears above all other elements */
-      filter: blur(0.5px); /* Add slight blur for CRT effect */
     }
 
     #side-image {
@@ -142,7 +141,16 @@
       "Use Define or Help for list of commands."
     ];
 
+    const asciiArt = [
+      "  _________ ",
+      " /         \\ ",
+      "|   O   O   |",
+      "|     ^     |",
+      " \\__|__|___/ ",
+    ];
+
     const definitions = {
+      "boot": "Boot into CalOS.",
       "define": "Explains the command requested.",
       "admin": "Provides login screen to access rest of device data.",
       "device": "A piece of hardware connected to the computer, such as a keyboard, mouse, or printer.",
@@ -150,18 +158,51 @@
     };
 
     const commands = {
-      "help": "Available commands: help, about, contact, commissions, define <term>",
+      "help": "Available commands: help, about, contact, commissions, define <term>, ascii, test",
       "about": "Celnet Systems LTD., all rights reserved.",
       "contact": "You can reach us at contact@celnetsystems.com.",
       "commissions": "Commissions are currently open. Visit our website for more details.",
-      "home": { url: "https://jaybirdnerd.github.io" }, // Example command linking to a webpage
+      "ascii": "Displaying ASCII art...",
       "define": "Usage: define <term>. Example: define cpu",
+      "boot": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" }, // Add the test command with a URL
     };
 
     const bootScreen = document.getElementById("boot-screen");
     const commandInput = document.getElementById("command-input");
     commandInput.style.display = "none"; // Initially hide the command input
     let currentLine = 0;
+
+    let keySequence = [];
+    const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight"];
+
+    function checkKeySequence(event) {
+      keySequence.push(event.key);
+
+      // Keep the sequence length equal to the Konami Code length
+      if (keySequence.length > konamiCode.length) {
+        keySequence.shift();
+      }
+
+      // Check if the sequence matches the Konami Code
+      if (keySequence.join(",") === konamiCode.join(",")) {
+        keySequence = []; // Reset the sequence
+        finishTyping(); // Trigger the immediate finish of text typing
+      }
+    }
+
+    function finishTyping() {
+      // Immediately display all remaining lines of bootText
+      while (currentLine < bootText.length) {
+        typeLine(bootText[currentLine], null, false);
+        currentLine++;
+      }
+
+      // Show the input field for commands
+      commandInput.style.display = "block";
+      commandInput.focus();
+    }
+
+    document.addEventListener("keydown", checkKeySequence);
 
     function typeLine(line, callback, appendToLastLine = false) {
       let div;
@@ -215,28 +256,19 @@
 
             if (commands[command]) {
               const response = commands[command];
-              if (command === "define") {
-                if (definitions[term]) {
-                  // Display the definition for the term
-                  typeLine(`${term}: ${definitions[term]}`, null, false);
-                } else {
-                  // Display an error if the term is not found
-                  typeLine(`Definition not found for: ${term}`, null, false);
-                }
-              } else if (typeof response === "string") {
+              if (typeof response === "string") {
                 // Display the response for the entered command
                 typeLine(response, null, false);
               } else if (response.url) {
-                // Create a clickable hyperlink for commands with a URL
-                const linkDiv = document.createElement("div");
-                const link = document.createElement("a");
-                link.href = response.url;
-                link.textContent = `Click here to visit: ${response.url}`;
-                link.style.color = "rgb(0, 255, 0)"; // Match the CRT-style green text
-                link.style.textDecoration = "none"; // Remove underline
-                link.target = "_blank"; // Open in a new tab
-                linkDiv.appendChild(link);
-                bootScreen.appendChild(linkDiv);
+                // Trigger the fade-out effect
+                const fadeOverlay = document.getElementById("fade-overlay");
+                fadeOverlay.style.opacity = "1"; // Start the fade-in
+                fadeOverlay.style.pointerEvents = "auto"; // Block interactions during the fade
+
+                // Redirect to the URL after the fade effect completes
+                setTimeout(() => {
+                  window.location.href = response.url;
+                }, 1000); // Match the duration of the fade effect (1 second)
               }
             } else {
               // Display an error message for unknown commands

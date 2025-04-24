@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celnet Systems ltd.</title>
+  <style>
+    body {
+      background-color: black;
+      color: rgb(0, 255, 0);
+      font-family: "Share Tech Mono", monospace;
+      font-size: 16px;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+      text-shadow: 0 0 2px rgb(0, 255, 0), 0 0 4px rgb(0, 255, 0), 0 0 8px rgba(0, 255, 0, 0.582);
+    }
+
+    #boot-screen {
+      position: absolute; /* Position it relative to the page */
+      top: 180px; /* Position it below the images (adjust based on image height) */
+      left: 10px; /* Align it with the left edge of the images */
+      white-space: pre-wrap;
+      line-height: 1.5;
+      overflow-y: auto; /* Allow vertical scrolling */
+      height: calc(100vh - 230px); /* Adjust height to leave space for the input field and images */
+      padding: 10px; /* Add padding for better readability */
+      border-radius: 15px; /* Slight rounding for CRT-like edges */
+    }
+
+    .blinking-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: rgb(0, 255, 0);
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
+    }
+
+    #fade-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease-in-out; /* Smooth fade effect */
+      z-index: 9999; /* Ensure it appears above all other elements */
+      filter: blur(0.5px); /* Add slight blur for CRT effect */
+    }
+
+    #side-image {
+      position: fixed; /* Keep the image fixed in place */
+      top: 10px; /* Position it 10px from the top */
+      left: 10px; /* Move it to the far left */
+      width: 150px; /* Set a fixed width for the image */
+      height: auto; /* Maintain the aspect ratio */
+      object-fit: contain; /* Ensure the image scales properly */
+      z-index: 1000; /* Ensure it appears above other elements */
+    }
+
+    #under-logo {
+      position: fixed; /* Keep the image fixed in place */
+      top: 10px; /* Align it with the first image vertically */
+      left: 170px; /* Position it to the right of the first image (150px width + 20px spacing) */
+      width: 150px; /* Match the width of the first image */
+      height: auto; /* Maintain the aspect ratio */
+      object-fit: contain; /* Ensure the image scales properly */
+      z-index: 1000; /* Ensure it appears above other elements */
+    }
+
+    #boot-screen h1 {
+      font-size: 24px; /* Make the text larger */
+      font-weight: bold; /* Make the text bold */
+      margin-left: 10px; /* Align the text with the images */
+      margin-top: 180px; /* Add spacing to position the text below the images */
+    }
+
+    #command-input {
+      position: fixed; /* Fix it to the bottom of the viewport */
+      bottom: 10px; /* Position it 10px from the bottom */
+      left: 0; /* Align it to the left edge */
+      width: 100%; /* Make it span the full width */
+      background-color: black;
+      color: rgb(0, 255, 0);
+      border: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      outline: none;
+      padding: 10px; /* Add padding for better spacing */
+      z-index: 1000; /* Ensure it appears above other elements */
+      display: none; /* Initially hide the command input */
+    }
+  </style>
+</head>
+<body>
+  <div id="fade-overlay"></div>
+  <img id="side-image" src="Images/celnet.png" alt="Celnet Systems" />
+  <img id="under-logo" src="Images/clnt.png" alt="logo" />
+  <div id="boot-screen"></div>
+  <input id="command-input" type="text" placeholder="Type a command..." />
+
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+    <defs>
+      <filter id="fisheye">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="warp" />
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="50" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script>
+    const bootText = [
+      "Celnet Systems",
+      "EXY-SDLBAC ™ F399-I INTERFACE BETA 0.6.6 ",
+      "CPU: DIVV 2.2.0 INT 170K-CORE 18-50000K CPU # 9.90GHz",
+      " ",
+      "Total Memory: 2.5PB",
+      " ",
+      "Detected Devices...",
+      "SDLBK-NRL 110.518",
+      "UFD 9.0 Silicon-Power16GPMAP",
+      "ADV-HID 2.20: SDLBK-HID 6.0",
+      " ",
+      "Initializing...................................... Done",
+      " ",      
+      "Type a command to proceed:"
+    ];
+
+    const definitions = {
+      "cpu": "Central Processing Unit, the brain of the computer responsible for executing instructions.",
+      "memory": "A device or system that stores data for immediate use in a computer.",
+      "device": "A piece of hardware connected to the computer, such as a keyboard, mouse, or printer.",
+      "interface": "A shared boundary across which two or more components exchange information.",
+    };
+
+    const commands = {
+      "help": "Available commands: help, about, contact, commissions, define <term>",
+      "about": "Celnet Systems LTD., all rights reserved.",
+      "contact": "You can reach us at contact@celnetsystems.com.",
+      "commissions": "Commissions are currently open. Visit our website for more details.",
+      "home": { url: "https://jaybirdnerd.github.io" }, // Example command linking to a webpage
+      "define": "Usage: define <term>. Example: define cpu",
+    };
+
+    const bootScreen = document.getElementById("boot-screen");
+    const commandInput = document.getElementById("command-input");
+    commandInput.style.display = "none"; // Initially hide the command input
+    let currentLine = 0;
+
+    function typeLine(line, callback, appendToLastLine = false) {
+      let div;
+
+      if (appendToLastLine) {
+        div = bootScreen.lastElementChild;
+      } else {
+        div = document.createElement("div");
+        bootScreen.appendChild(div);
+      }
+
+      let charIndex = 0;
+
+      function typeChar() {
+        if (charIndex < line.length) {
+          div.textContent += line[charIndex];
+          charIndex++;
+          setTimeout(typeChar, 50); // Typing speed
+        } else {
+          // Add blinking cursor for the last line
+          if (line === "Type a command to proceed:") {
+            const cursor = document.createElement("span");
+            cursor.classList.add("blinking-cursor");
+            div.appendChild(cursor);
+          }
+          if (callback) {
+            setTimeout(callback, 500); // Delay before the next line
+          }
+        }
+      }
+
+      typeChar();
+    }
+
+    function startTyping() {
+      if (currentLine < bootText.length) {
+        typeLine(bootText[currentLine], () => {
+          currentLine++;
+          startTyping();
+        });
+      } else {
+        // Show the input field for commands after typing finishes
+        setTimeout(() => {
+          commandInput.style.display = "block";
+          commandInput.focus();
+        }, 500); // Add a slight delay after the last line finishes
+
+        // Listen for user input
+        commandInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            const input = commandInput.value.trim().toLowerCase();
+            const [command, ...args] = input.split(" ");
+            const term = args.join(" ");
+
+            if (commands[command]) {
+              const response = commands[command];
+              if (command === "define") {
+                if (definitions[term]) {
+                  // Display the definition for the term
+                  typeLine(`${term}: ${definitions[term]}`, null, false);
+                } else {
+                  // Display an error if the term is not found
+                  typeLine(`Definition not found for: ${term}`, null, false);
+                }
+              } else if (typeof response === "string") {
+                // Display the response for the entered command
+                typeLine(response, null, false);
+              } else if (response.url) {
+                // Create a clickable hyperlink for commands with a URL
+                const linkDiv = document.createElement("div");
+                const link = document.createElement("a");
+                link.href = response.url;
+                link.textContent = `Click here to visit: ${response.url}`;
+                link.style.color = "rgb(0, 255, 0)"; // Match the CRT-style green text
+                link.style.textDecoration = "none"; // Remove underline
+                link.target = "_blank"; // Open in a new tab
+                linkDiv.appendChild(link);
+                bootScreen.appendChild(linkDiv);
+              }
+            } else {
+              // Display an error message for unknown commands
+              typeLine(`Unknown command: ${command}`, null, false);
+            }
+            commandInput.value = ""; // Clear the input field
+          }
+        });
+      }
+    }
+
+    startTyping();
+  </script>
+</body>
+</html>

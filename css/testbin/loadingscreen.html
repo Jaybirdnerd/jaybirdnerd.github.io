@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIOS Boot-In Style</title>
+  <style>
+    body {
+      background-color: black;
+      color: rgb(0, 255, 0);
+      font-family: "Courier New", monospace;
+      font-size: 16px;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    #boot-screen {
+      white-space: pre-wrap;
+      line-height: 1.5;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .blinking-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: rgb(0, 255, 0);
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="boot-screen"></div>
+
+  <script>
+    const bootText = [
+      "Initializing BIOS...",
+      "Loading system configuration...",
+      "Checking memory: ", // First part of memory check
+      "8192MB OK",         // Second part of memory check
+      "Detecting hardware...",
+      "Hard Drive: ",      // First part of hard drive check
+      "512GB SSD OK",      // Second part of hard drive check
+      "Network Adapter: Connected",
+      "Checksum: ",        // Placeholder for the checksum counter
+      "Booting operating system...",
+      "Welcome to the BIOS Boot-In Style Webpage!"
+    ];
+
+    const bootScreen = document.getElementById("boot-screen");
+    let currentLine = 0;
+
+    function typeLine(line, callback, appendToLastLine = false) {
+      let div;
+
+      // If appending to the last line, use the last <div>
+      if (appendToLastLine) {
+        div = bootScreen.lastElementChild;
+      } else {
+        div = document.createElement("div");
+        bootScreen.appendChild(div);
+      }
+
+      let charIndex = 0;
+
+      function typeChar() {
+        if (charIndex < line.length) {
+          div.textContent += line[charIndex];
+          charIndex++;
+          setTimeout(typeChar, 50); // Speed of typing (50ms per character)
+        } else if (callback) {
+          const pauseDuration = (currentLine === 2 || currentLine === 5) ? 1000 : 500; // Pause for specific lines
+          setTimeout(callback, pauseDuration);
+        }
+      }
+
+      typeChar();
+    }
+
+    function typeChecksum(callback) {
+      const div = document.createElement("div");
+      bootScreen.appendChild(div);
+
+      let checksum = 1;
+
+      function updateChecksum() {
+        if (checksum <= 100) {
+          div.textContent = `Checksum: ${checksum}%`;
+          checksum++;
+          setTimeout(updateChecksum, 20); // Speed of the counter (20ms per increment)
+        } else if (callback) {
+          setTimeout(callback, 500); // Delay before the next line starts
+        }
+      }
+
+      updateChecksum();
+    }
+
+    function startTyping() {
+      if (currentLine < bootText.length) {
+        if (bootText[currentLine] === "Checksum: ") {
+          // Special handling for the checksum line
+          typeChecksum(() => {
+            currentLine++;
+            startTyping();
+          });
+        } else if (currentLine === 2) {
+          // Special handling for "Checking memory"
+          typeLine(bootText[currentLine], () => {
+            typeLine(bootText[currentLine + 1], () => {
+              currentLine += 2;
+              startTyping();
+            }, true); // Append to the same line
+          });
+        } else if (currentLine === 5) {
+          // Special handling for "Hard Drive"
+          typeLine(bootText[currentLine], () => {
+            typeLine(bootText[currentLine + 1], () => {
+              currentLine += 2;
+              startTyping();
+            }, true); // Append to the same line
+          });
+        } else {
+          typeLine(bootText[currentLine], () => {
+            currentLine++;
+            startTyping();
+          });
+        }
+      } else {
+        // Add blinking cursor at the end
+        const cursor = document.createElement("span");
+        cursor.classList.add("blinking-cursor");
+        bootScreen.appendChild(cursor);
+
+        // Transition to main content after a delay
+        setTimeout(() => {
+          window.location.href = "main-content.html"; // Replace with your target page
+        }, 3000);
+      }
+    }
+
+    startTyping();
+  </script>
+</body>
+</html>

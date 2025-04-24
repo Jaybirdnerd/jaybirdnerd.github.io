@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BIOS Boot-In Style</title>
+  <title>You should hit F11.</title>
   <style>
     body {
       background-color: black;
       color: rgb(0, 255, 0);
-      font-family: "Courier New", monospace;
+      font-family: "Share Tech Mono", monospace;
       font-size: 16px;
       margin: 0;
       padding: 20px;
@@ -18,8 +18,9 @@
     #boot-screen {
       white-space: pre-wrap;
       line-height: 1.5;
-      overflow: hidden;
-      height: 100vh;
+      overflow-y: auto; /* Allow vertical scrolling */
+      height: calc(100vh - 50px); /* Adjust height to leave space for the input field */
+      padding: 10px; /* Add padding for better readability */
     }
 
     .blinking-cursor {
@@ -35,33 +36,69 @@
         background-color: transparent;
       }
     }
+
+    #fade-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease-in-out; /* Smooth fade effect */
+      z-index: 9999; /* Ensure it appears above all other elements */
+    }
+
+    #side-image {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
   <div id="boot-screen"></div>
+  <div id="fade-overlay"></div>
+  <img id="side-image" src="Alternative Storage/Images/celnet.png" alt="Celnet Systems" />
+  <input id="command-input" type="text" placeholder="Type a command..." style="display: none; background-color: black; color: rgb(0, 255, 0); border: none; font-family: 'Share Tech Mono', monospace; font-size: 16px; width: 100%; outline: none;" />
 
   <script>
     const bootText = [
-      "Initializing BIOS...",
-      "Loading system configuration...",
-      "Checking memory: ", // First part of memory check
-      "8192MB OK",         // Second part of memory check
-      "Detecting hardware...",
-      "Hard Drive: ",      // First part of hard drive check
-      "512GB SSD OK",      // Second part of hard drive check
-      "Network Adapter: Connected",
-      "Checksum: ",        // Placeholder for the checksum counter
-      "Booting operating system...",
-      "Welcome to the BIOS Boot-In Style Webpage!"
+      "Celnet Systems",
+      "EXY-SDLBAC ™ F399-I INTERFACE BETA 0.6.6 ",
+      "CPU: DIVV 2.2.0 INT 170K-CORE 18-50000K CPU # 9.90GHz",
+      " ",
+      "Total Memory: 2.5PB",
+      " ",
+      "Detected Devices...",
+      "SDLBK-NRL 110.518",
+      "UFD 9.0 Silicon-Power16GPMAP",
+      "ADV-HID 2.20: SDLBK-HID 6.0",
+      " ",
+      "Initializing...................................... Done",
+      " ",      
+      "Type a command to proceed:"
     ];
 
+    const commands = {
+      "home": "home.html",
+      "about": "about.html",
+      "contact": "contact.html",
+      "help": "help.html",
+      "086-c": "archives.html"
+    };
+
     const bootScreen = document.getElementById("boot-screen");
+    const commandInput = document.getElementById("command-input");
     let currentLine = 0;
 
     function typeLine(line, callback, appendToLastLine = false) {
       let div;
 
-      // If appending to the last line, use the last <div>
       if (appendToLastLine) {
         div = bootScreen.lastElementChild;
       } else {
@@ -75,75 +112,56 @@
         if (charIndex < line.length) {
           div.textContent += line[charIndex];
           charIndex++;
-          setTimeout(typeChar, 50); // Speed of typing (50ms per character)
-        } else if (callback) {
-          const pauseDuration = (currentLine === 2 || currentLine === 5) ? 1000 : 500; // Pause for specific lines
-          setTimeout(callback, pauseDuration);
+          setTimeout(typeChar, 50); // Typing speed
+        } else {
+          // Add blinking cursor for the last line
+          if (line === "Type a command to proceed") {
+            const cursor = document.createElement("span");
+            cursor.classList.add("blinking-cursor");
+            div.appendChild(cursor);
+          }
+          if (callback) {
+            setTimeout(callback, 500); // Delay before the next line
+          }
         }
       }
 
       typeChar();
     }
 
-    function typeChecksum(callback) {
-      const div = document.createElement("div");
-      bootScreen.appendChild(div);
-
-      let checksum = 1;
-
-      function updateChecksum() {
-        if (checksum <= 100) {
-          div.textContent = `Checksum: ${checksum}%`;
-          checksum++;
-          setTimeout(updateChecksum, 20); // Speed of the counter (20ms per increment)
-        } else if (callback) {
-          setTimeout(callback, 500); // Delay before the next line starts
-        }
-      }
-
-      updateChecksum();
-    }
-
     function startTyping() {
       if (currentLine < bootText.length) {
-        if (bootText[currentLine] === "Checksum: ") {
-          // Special handling for the checksum line
-          typeChecksum(() => {
-            currentLine++;
-            startTyping();
-          });
-        } else if (currentLine === 2) {
-          // Special handling for "Checking memory"
-          typeLine(bootText[currentLine], () => {
-            typeLine(bootText[currentLine + 1], () => {
-              currentLine += 2;
-              startTyping();
-            }, true); // Append to the same line
-          });
-        } else if (currentLine === 5) {
-          // Special handling for "Hard Drive"
-          typeLine(bootText[currentLine], () => {
-            typeLine(bootText[currentLine + 1], () => {
-              currentLine += 2;
-              startTyping();
-            }, true); // Append to the same line
-          });
-        } else {
-          typeLine(bootText[currentLine], () => {
-            currentLine++;
-            startTyping();
-          });
-        }
+        typeLine(bootText[currentLine], () => {
+          currentLine++;
+          startTyping();
+        });
       } else {
-        // Add blinking cursor at the end
-        const cursor = document.createElement("span");
-        cursor.classList.add("blinking-cursor");
-        bootScreen.appendChild(cursor);
+        // Show the input field for commands
+        commandInput.style.display = "block";
+        commandInput.focus();
 
-        // Transition to main content after a delay
-        setTimeout(() => {
-          window.location.href = "main-content.html"; // Replace with your target page
-        }, 3000);
+        // Listen for user input
+        commandInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            const command = commandInput.value.trim().toLowerCase();
+            if (commands[command]) {
+              // Trigger the fade effect
+              const fadeOverlay = document.getElementById("fade-overlay");
+              fadeOverlay.style.opacity = "1"; // Start the fade-in
+              fadeOverlay.style.pointerEvents = "auto"; // Block interactions during the fade
+
+              // Navigate to the new page after the fade effect completes
+              setTimeout(() => {
+                window.location.href = commands[command];
+              }, 1000); // Match the duration of the fade effect (1 second)
+            } else {
+              const errorDiv = document.createElement("div");
+              errorDiv.textContent = `Unknown command: ${command}`;
+              bootScreen.appendChild(errorDiv);
+              commandInput.value = ""; // Clear the input field
+            }
+          }
+        });
       }
     }
 

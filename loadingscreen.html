@@ -22,10 +22,11 @@
       left: 10px; /* Align it with the left edge of the images */
       white-space: pre-wrap;
       line-height: 1.5;
-      overflow-y: auto; /* Allow vertical scrolling */
-      height: calc(100vh - 230px); /* Adjust height to leave space for the input field and images */
+      overflow-y: hidden; /* Hide the scrollbar */
+      height: calc(100vh - 280px); /* Adjust height to leave space for the input field */
       padding: 10px; /* Add padding for better readability */
       border-radius: 15px; /* Slight rounding for CRT-like edges */
+      scroll-behavior: smooth; /* Enable smooth scrolling */
     }
 
     .blinking-cursor {
@@ -129,14 +130,21 @@
       "UFD 9.0 Silicon-Power16GPMAP",
       "ADV-HID 2.20: SDLBK-HID 6.0",
       " ",
+      "Loading Device Drivers...",
+      "SDLBK-NRL 110.518: ................ OK",
+      "AVD-HID 2.20: ................ OK",  
+      " ",
+      "Checking Neural Interface ............... OK",
+      " ",
       "Initializing...................................... Done",
       " ",      
-      "Type a command to proceed:"
+      "Waiting for command input...",
+      "Use Define or Help for list of commands."
     ];
 
     const definitions = {
-      "cpu": "Central Processing Unit, the brain of the computer responsible for executing instructions.",
-      "memory": "A device or system that stores data for immediate use in a computer.",
+      "define": "Explains the command requested.",
+      "admin": "Provides login screen to access rest of device data.",
       "device": "A piece of hardware connected to the computer, such as a keyboard, mouse, or printer.",
       "interface": "A shared boundary across which two or more components exchange information.",
     };
@@ -172,13 +180,10 @@
           div.textContent += line[charIndex];
           charIndex++;
           setTimeout(typeChar, 50); // Typing speed
+
+          // Scroll to the bottom of the boot screen
+          bootScreen.scrollTop = bootScreen.scrollHeight;
         } else {
-          // Add blinking cursor for the last line
-          if (line === "Type a command to proceed:") {
-            const cursor = document.createElement("span");
-            cursor.classList.add("blinking-cursor");
-            div.appendChild(cursor);
-          }
           if (callback) {
             setTimeout(callback, 500); // Delay before the next line
           }

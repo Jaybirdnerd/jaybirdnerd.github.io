@@ -127,6 +127,9 @@
   </style>
 </head>
 <body>
+  <!-- Audio element for autoplay -->
+  <audio id="background-audio" src="sound/computer.mp3" loop hidden></audio>
+
   <!-- Image overlay -->
   <div id="image-overlay"></div>
 
@@ -136,16 +139,26 @@
   <div id="boot-screen"></div>
   <input id="command-input" type="text" placeholder=" " />
 
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
-    <defs>
-      <filter id="fisheye">
-        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="warp" />
-        <feDisplacementMap in="SourceGraphic" in2="warp" scale="50" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </defs>
-  </svg>
-<!--Note for future me: The konami code is a debugging feature, not a intended feature. It is used to skip the typing animation and show all lines at once.-->
   <script>
+    // Wait for user interaction to play the audio
+    const audio = document.getElementById("background-audio");
+
+    // Set the volume to 50% (0.5)
+    audio.volume = 0.1;
+
+    function playAudio() {
+      audio.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
+      // Remove the event listener after the audio starts playing
+      document.removeEventListener("click", playAudio);
+      document.removeEventListener("keydown", playAudio);
+    }
+
+    // Add event listeners for user interaction
+    document.addEventListener("click", playAudio);
+    document.addEventListener("keydown", playAudio);
+
     const bootText = [
       "Celnet Systems",
       "EXY-SDLBAC ™ F399-I INTERFACE BETA 0.6.6 ",
@@ -186,11 +199,16 @@
       "commissions": "Provides information on commissions.",
       "about": "Provides information about the system.",
       "contact": "Provides contact information.",
+      "shutdown": "Shuts down the system.",
+      "Caldera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "Dana": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.", 
+      "Vera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "project_spiral": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
     };
 
     const commands = {
       "Dana": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
-      "help": "Available commands: help, about, contact, commissions, define <term>, ascii, test",
+      "help": "Available commands: help, define, login, about, contact, commissions, boot, shutdown",
       "login": { url: "login.html" },
       "about": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
       "contact": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
@@ -202,6 +220,11 @@
       "boot": { url: "https://jaybirdnerd.github.io/home" }, 
       "shutdown": { url: ""},
     };
+
+    const normalizedCommands = {};
+    Object.keys(commands).forEach((key) => {
+      normalizedCommands[key.toLowerCase()] = commands[key];
+    });
 
     const bootScreen = document.getElementById("boot-screen");
     const commandInput = document.getElementById("command-input");
@@ -301,15 +324,15 @@
       }, 1000); // Match the duration of the fade effect (1 second)
     }
 
-    // Update the command input logic to use the fade effect
+    // Update the command input logic to use the normalized commands
     commandInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
-        const input = commandInput.value.trim().toLowerCase();
+        const input = commandInput.value.trim().toLowerCase(); // Convert input to lowercase
         const [command, ...args] = input.split(" ");
         const term = args.join(" ");
 
-        if (commands[command]) {
-          const response = commands[command];
+        if (normalizedCommands[command]) {
+          const response = normalizedCommands[command];
           if (command === "define") {
             // Handle the define command
             if (term && definitions[term]) {

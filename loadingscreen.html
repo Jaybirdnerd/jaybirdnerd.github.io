@@ -29,6 +29,18 @@
       }
     }
 
+    #image-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('Images/scanlines.png') center center / cover no-repeat; /* Replace with your image path */
+      opacity: 0.5; /* Light transparency */
+      pointer-events: none; /* Ensure it doesn't block interactions */
+      z-index: 1002; /* Ensure it appears above all elements */
+    }
+
     #boot-screen {
       position: absolute; /* Position it relative to the page */
       top: 180px; /* Position it below the images (adjust based on image height) */
@@ -40,6 +52,7 @@
       padding: 10px; /* Add padding for better readability */
       border-radius: 15px; /* Slight rounding for CRT-like edges */
       scroll-behavior: smooth; /* Enable smooth scrolling */
+      z-index: 999; /* Ensure the boot screen appears below the images and overlays */
     }
 
     .blinking-cursor {
@@ -66,7 +79,7 @@
       opacity: 0; /* Initially transparent */
       pointer-events: none;
       transition: opacity 1s ease-in-out; /* Smooth fade effect */
-      z-index: 9999; /* Ensure it appears above all other elements */
+      z-index: 1001; /* Ensure it appears below the image overlay */
     }
 
     #side-image {
@@ -76,7 +89,7 @@
       width: 150px; /* Set a fixed width for the image */
       height: auto; /* Maintain the aspect ratio */
       object-fit: contain; /* Ensure the image scales properly */
-      z-index: 1000; /* Ensure it appears above other elements */
+      z-index: 1000; /* Ensure these elements appear below the overlays */
     }
 
     #under-logo {
@@ -86,7 +99,7 @@
       width: 150px; /* Match the width of the first image */
       height: auto; /* Maintain the aspect ratio */
       object-fit: contain; /* Ensure the image scales properly */
-      z-index: 1000; /* Ensure it appears above other elements */
+      z-index: 1000; /* Ensure these elements appear below the overlays */
     }
 
     #boot-screen h1 {
@@ -108,12 +121,15 @@
       font-size: 16px;
       outline: none;
       padding: 10px; /* Add padding for better spacing */
-      z-index: 1000; /* Ensure it appears above other elements */
+      z-index: 1000; /* Ensure the command input appears above the boot screen but below the overlays */
       display: none; /* Initially hide the command input */
     }
   </style>
 </head>
 <body>
+  <!-- Image overlay -->
+  <div id="image-overlay"></div>
+
   <div id="fade-overlay"></div>
   <img id="side-image" src="Images/Celnet.png" alt="Celnet Systems" />
   <img id="under-logo" src="Images/clnt.png" alt="logo" />

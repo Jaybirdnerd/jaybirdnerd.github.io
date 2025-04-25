@@ -159,10 +159,9 @@
 
     const commands = {
       "help": "Available commands: help, about, contact, commissions, define <term>, ascii, test",
-      "about": "Celnet Systems LTD., all rights reserved.",
-      "contact": "You can reach us at contact@celnetsystems.com.",
-      "commissions": "Commissions are currently open. Visit our website for more details.",
-      "ascii": "Displaying ASCII art...",
+      "about": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
+      "contact": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
+      "commissions": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
       "define": "Usage: define <term>. Example: define cpu",
       "boot": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" }, // Add the test command with a URL
     };
@@ -207,6 +206,7 @@
     function typeLine(line, callback, appendToLastLine = false) {
       let div;
 
+      // Create a new <div> or append to the last line
       if (appendToLastLine) {
         div = bootScreen.lastElementChild;
       } else {
@@ -216,6 +216,7 @@
 
       let charIndex = 0;
 
+      // Function to type characters one by one
       function typeChar() {
         if (charIndex < line.length) {
           div.textContent += line[charIndex];
@@ -238,7 +239,7 @@
       if (currentLine < bootText.length) {
         typeLine(bootText[currentLine], () => {
           currentLine++;
-          startTyping();
+          startTyping(); // Continue typing the next line
         });
       } else {
         // Show the input field for commands after typing finishes
@@ -246,41 +247,46 @@
           commandInput.style.display = "block";
           commandInput.focus();
         }, 500); // Add a slight delay after the last line finishes
-
-        // Listen for user input
-        commandInput.addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
-            const input = commandInput.value.trim().toLowerCase();
-            const [command, ...args] = input.split(" ");
-            const term = args.join(" ");
-
-            if (commands[command]) {
-              const response = commands[command];
-              if (typeof response === "string") {
-                // Display the response for the entered command
-                typeLine(response, null, false);
-              } else if (response.url) {
-                // Trigger the fade-out effect
-                const fadeOverlay = document.getElementById("fade-overlay");
-                fadeOverlay.style.opacity = "1"; // Start the fade-in
-                fadeOverlay.style.pointerEvents = "auto"; // Block interactions during the fade
-
-                // Redirect to the URL after the fade effect completes
-                setTimeout(() => {
-                  window.location.href = response.url;
-                }, 1000); // Match the duration of the fade effect (1 second)
-              }
-            } else {
-              // Display an error message for unknown commands
-              typeLine(`Unknown command: ${command}`, null, false);
-            }
-            commandInput.value = ""; // Clear the input field
-          }
-        });
       }
     }
 
+    // Start typing automatically
     startTyping();
+
+    function fadeToBlackAndRedirect(url) {
+      const fadeOverlay = document.getElementById("fade-overlay");
+      fadeOverlay.style.opacity = "1"; // Start the fade-in
+      fadeOverlay.style.pointerEvents = "auto"; // Block interactions during the fade
+
+      // Redirect to the URL after the fade effect completes
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000); // Match the duration of the fade effect (1 second)
+    }
+
+    // Update the command input logic to use the fade effect
+    commandInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const input = commandInput.value.trim().toLowerCase();
+        const [command, ...args] = input.split(" ");
+        const term = args.join(" ");
+
+        if (commands[command]) {
+          const response = commands[command];
+          if (typeof response === "string") {
+            // Display the response for the entered command
+            typeLine(response, null, false);
+          } else if (response.url) {
+            // Trigger the fade-out effect and redirect
+            fadeToBlackAndRedirect(response.url);
+          }
+        } else {
+          // Display an error message for unknown commands
+          typeLine(`Unknown command: ${command}`, null, false);
+        }
+        commandInput.value = ""; // Clear the input field
+      }
+    });
   </script>
 </body>
 </html>

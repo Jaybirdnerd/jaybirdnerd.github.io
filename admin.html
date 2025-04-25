@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack elements vertically */
             align-items: center;
             height: 100vh;
             text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 8px rgba(0, 255, 0, 0.5);
@@ -36,6 +36,12 @@
             100% {
                 opacity: 0;
             }
+        }
+
+        .logo {
+            margin-top: 20px; /* Add some spacing from the top */
+            margin-bottom: 10px; /* Add spacing between the image and the box */
+            max-width: 150px; /* Limit the image width */
         }
 
         .terminal-border {
@@ -105,6 +111,9 @@
     </style>
 </head>
 <body>
+    <!-- Add the logo image -->
+    <img src="Images/ced.png" alt="Logo" class="logo">
+
     <div id="fade-overlay"></div>
     <div class="terminal-border">
         <div class="tab-container">

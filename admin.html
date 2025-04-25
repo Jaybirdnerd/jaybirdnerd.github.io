@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: "Share Tech Mono", monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 8px rgba(0, 255, 0, 0.5);
+            opacity: 0; /* Start fully transparent */
+            animation: fadeIn 1.5s ease-in-out forwards; /* Fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .terminal-border {
+            display: flex;
+            width: 90%; /* Span most of the page */
+            height: 80%; /* Adjust height as needed */
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .tab-container {
+            width: 50%; /* Take up half the page */
+            background-color: black;
+            border-right: 2px solid #00ff00; /* Divider in the center */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #00ff00;
+            text-align: center;
+            color: #00ff00;
+            font-family: "Share Tech Mono", monospace;
+        }
+
+        .tab:hover {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+
+        .tab.active {
+            background-color: rgba(0, 255, 0, 0.3);
+        }
+
+        .content-container {
+            width: 50%; /* Take up the other half of the page */
+            padding: 20px;
+            background-color: black;
+            color: #00ff00;
+            font-family: "Share Tech Mono", monospace;
+            overflow-y: auto;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        /* Fade-out overlay */
+        #fade-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div id="fade-overlay"></div>
+    <div class="terminal-border">
+        <div class="tab-container">
+            <div class="tab" onclick="showContent('content1')">RE: Project Spiral</div>
+            <div class="tab" onclick="showContent('content2')">Tab 2</div>
+            <div class="tab" onclick="showContent('content3')">Tab 3</div>
+        </div>
+        <div class="content-container">
+            <div id="content1" class="content">
+                This is the content for Tab 1.
+                <a href="page1.html" class="link">Go to Page 1</a>
+            </div>
+            <div id="content2" class="content">
+                This is the content for Tab 2.
+                <a href="page2.html" class="link">Go to Page 2</a>
+            </div>
+            <div id="content3" class="content">
+                This is the content for Tab 3.
+                <a href="page3.html" class="link">Go to Page 3</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show content for tabs
+        function showContent(contentId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            document.querySelector(`[onclick="showContent('${contentId}')"]`).classList.add('active');
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        // Fade-out effect on link click
+        const links = document.querySelectorAll('.link');
+        const fadeOverlay = document.getElementById('fade-overlay');
+
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent immediate navigation
+                const href = link.getAttribute('href'); // Get the target URL
+
+                fadeOverlay.style.opacity = '1'; // Start fade-out
+                fadeOverlay.style.pointerEvents = 'auto'; // Block interactions during fade
+
+                setTimeout(() => {
+                    window.location.href = href; // Redirect after fade-out
+                }, 1000); // Match the fade-out duration
+            });
+        });
+    </script>
+</body>
+</html>

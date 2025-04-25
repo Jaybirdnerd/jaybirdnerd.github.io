@@ -14,6 +14,17 @@
       padding: 20px;
       overflow: hidden;
       text-shadow: 0 0 2px rgb(0, 255, 0), 0 0 4px rgb(0, 255, 0), 0 0 8px rgba(0, 255, 0, 0.582);
+      opacity: 0; /* Start fully transparent */
+      animation: fadeIn 1.5s ease-in-out forwards; /* Fade-in animation */
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
     #boot-screen {
@@ -105,7 +116,7 @@
   <img id="side-image" src="Images/Celnet.png" alt="Celnet Systems" />
   <img id="under-logo" src="Images/clnt.png" alt="logo" />
   <div id="boot-screen"></div>
-  <input id="command-input" type="text" placeholder="Type a command..." />
+  <input id="command-input" type="text" placeholder=" " />
 
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
     <defs>
@@ -115,7 +126,7 @@
       </filter>
     </defs>
   </svg>
-
+<!--Note for future me: The konami code is a debugging feature, not a intended feature. It is used to skip the typing animation and show all lines at once.-->
   <script>
     const bootText = [
       "Celnet Systems",
@@ -150,20 +161,27 @@
     ];
 
     const definitions = {
-      "boot": "Boot into CalOS.",
+      "boot": "Boot into VennOS.",
+      "help": "Provides a list of commands useable by this terminal.",
       "define": "Explains the command requested.",
-      "admin": "Provides login screen to access rest of device data.",
-      "device": "A piece of hardware connected to the computer, such as a keyboard, mouse, or printer.",
-      "interface": "A shared boundary across which two or more components exchange information.",
+      "admin": "Provides login screen to access sensitive data.",
+      "commissions": "Provides information on commissions.",
+      "about": "Provides information about the system.",
+      "contact": "Provides contact information.",
     };
 
     const commands = {
       "help": "Available commands: help, about, contact, commissions, define <term>, ascii, test",
+      "admin": { url: "https://jaybirdnerd.github.io/home" },
       "about": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
       "contact": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
       "commissions": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
-      "define": "Usage: define <term>. Example: define cpu",
-      "boot": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" }, // Add the test command with a URL
+      "define": "Usage: define <term>. Example: define Help.",
+      "Caldera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "Vera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "project_spiral": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "boot": { url: "https://jaybirdnerd.github.io/home" }, 
+      "shutdown": { url: ""},
     };
 
     const bootScreen = document.getElementById("boot-screen");
@@ -177,7 +195,7 @@
     function checkKeySequence(event) {
       keySequence.push(event.key);
 
-      // Keep the sequence length equal to the Konami Code length
+      // Konami Kode, used for debugging, not a intended feature.
       if (keySequence.length > konamiCode.length) {
         keySequence.shift();
       }
@@ -273,7 +291,21 @@
 
         if (commands[command]) {
           const response = commands[command];
-          if (typeof response === "string") {
+          if (command === "define") {
+            // Handle the define command
+            if (term && definitions[term]) {
+              typeLine(`${term}: ${definitions[term]}`, null, false);
+            } else if (!term) {
+              typeLine("Usage: define <term>. Example: define cpu", null, false);
+            } else {
+              typeLine(`No definition found for: ${term}`, null, false);
+            }
+          } else if (command === "shutdown") {
+            // Handle the shutdown command
+            const fadeOverlay = document.getElementById("fade-overlay");
+            fadeOverlay.style.opacity = "1"; // Make the screen fully black
+            fadeOverlay.style.pointerEvents = "auto"; // Block interactions
+          } else if (typeof response === "string") {
             // Display the response for the entered command
             typeLine(response, null, false);
           } else if (response.url) {

@@ -1,52 +1,366 @@
 <!DOCTYPE html>
-<hmtl>
-    <head>
-    <!--TO DO: 
-    1.
-    2. 
-    3. 
-    4. Fix the tab icon.
-    5. -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" href="cpu.ico" type="image/x-icon">
-    <!--Backup Tab Title-->
-    <title>You Should Not See This, If You Do Contact Me.</title> 
-    </head>
-    <body>
-        <!--Web Logo-->
-            <img src="Images/logo6.svg" class="logo">
-<center>
-    <div class="warnbox">
-        <h1>Welcome to my Website!</h1>
-        <img src="Images/warning.png" class="trangle">
-        <img src="Images/warning.png" class="trangle2">
-        <H2>CONTENT ADVISORY:</H2>
-        <p class="warn">The content of this website is intended for mature (18+) audiences only.</p>
-        <div class="image-container">
-        </div>
-            <img src="images/arrow.gif" class="arrow1">
-        <a href="https://jaybirdnerd.github.io/home" class="button">Click here if you're ok with that!</a>
-            <img src="Images/arrow2.gif" class="arrow2">
-    </center>
-        <!--<img src="Images/slimedrip2.gif" class="sd2">
-        <img src="Images/slimedrip6.gif" class="sd2d">
-        <img src="Images/slimedrip3.gif" class="sd3">
-        <img src="Images/sd3r.gif" class="sd3r">
--->       
-        <img src="Images/hackerskull.gif" class="coolskull">
-        <img src="Images/esrb.gif" class="advisory">
-        <img src="Images/hackerskull.gif" class="coolskull2">
-        <!--textscroll.js seems to operate the tab scrolling.-->
-        <script src="textscroll.js"></script>
-    </body>
-</hmtl>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celnet Systems ltd.</title>
+  <!-- Include DotGothic16 font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: rgb(0, 255, 0);
+      font-family: 'DotGothic16', sans-serif; /* Apply DotGothic16 font */
+      font-size: 16px;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+      text-shadow: 0 0 2px rgb(0, 255, 0), 0 0 4px rgb(0, 255, 0), 0 0 8px rgba(0, 255, 0, 0.582);
+      opacity: 0; /* Start fully transparent */
+      animation: fadeIn 1.5s ease-in-out forwards; /* Fade-in animation */
+    }
 
-<!-- vv Relevant Links Hold Onto These vv -->
-<!--
-https://jaybirdnerd.github.io/html/commissioninfo.html - Commission Information
-https://aviandoorstep.neocities.org - Neocities
-https://jaybirdnerd.github.io/html/projects.html - Projects
-https://jaybirdnerd.github.io/html/contact.html - Contact Info
-https://jaybirdnerd.github.io/html/demopage.html - Demo/Test page
-https://jaybirdnerd.github.io/html/about.html - About Page
--->
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #image-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('Images/scanlines.png') center center / cover no-repeat; /* Replace with your image path */
+      opacity: 0.5; /* Light transparency */
+      pointer-events: none; /* Ensure it doesn't block interactions */
+      z-index: 1002; /* Ensure it appears above all elements */
+    }
+
+    #boot-screen {
+      position: absolute; /* Position it relative to the page */
+      top: 180px; /* Position it below the images (adjust based on image height) */
+      left: 10px; /* Align it with the left edge of the images */
+      white-space: pre-wrap;
+      line-height: 1.5;
+      overflow-y: hidden; /* Hide the scrollbar */
+      height: calc(100vh - 280px); /* Adjust height to leave space for the input field */
+      padding: 10px; /* Add padding for better readability */
+      border-radius: 15px; /* Slight rounding for CRT-like edges */
+      scroll-behavior: smooth; /* Enable smooth scrolling */
+      z-index: 999; /* Ensure the boot screen appears below the images and overlays */
+    }
+
+    .blinking-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: rgb(0, 255, 0);
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
+    }
+
+    #fade-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0; /* Initially transparent */
+      pointer-events: none;
+      transition: opacity 1s ease-in-out; /* Smooth fade effect */
+      z-index: 1001; /* Ensure it appears below the image overlay */
+    }
+
+    #side-image {
+      position: fixed; /* Keep the image fixed in place */
+      top: 10px; /* Position it 10px from the top */
+      left: 10px; /* Move it to the far left */
+      width: 150px; /* Set a fixed width for the image */
+      height: auto; /* Maintain the aspect ratio */
+      object-fit: contain; /* Ensure the image scales properly */
+      z-index: 1000; /* Ensure these elements appear below the overlays */
+    }
+
+    #under-logo {
+      position: fixed; /* Keep the image fixed in place */
+      top: 10px; /* Align it with the first image vertically */
+      left: 170px; /* Position it to the right of the first image (150px width + 20px spacing) */
+      width: 150px; /* Match the width of the first image */
+      height: auto; /* Maintain the aspect ratio */
+      object-fit: contain; /* Ensure the image scales properly */
+      z-index: 1000; /* Ensure these elements appear below the overlays */
+    }
+
+    #boot-screen h1 {
+      font-size: 24px; /* Make the text larger */
+      font-weight: bold; /* Make the text bold */
+      margin-left: 10px; /* Align the text with the images */
+      margin-top: 180px; /* Add spacing to position the text below the images */
+    }
+
+    #command-input {
+      position: fixed; /* Fix it to the bottom of the viewport */
+      bottom: 10px; /* Position it 10px from the bottom */
+      left: 0; /* Align it to the left edge */
+      width: 100%; /* Make it span the full width */
+      background-color: black;
+      color: rgb(0, 255, 0);
+      border: none;
+      font-family: 'DotGothic16', sans-serif; /* Apply DotGothic16 font */
+      font-size: 16px;
+      outline: none;
+      padding: 10px; /* Add padding for better spacing */
+      z-index: 1000; /* Ensure the command input appears above the boot screen but below the overlays */
+      display: none; /* Initially hide the command input */
+    }
+  </style>
+</head>
+<body>
+  <!-- Audio element for autoplay -->
+  <audio id="background-audio" src="sound/computer.mp3" loop hidden></audio>
+
+  <!-- Image overlay -->
+  <div id="image-overlay"></div>
+
+  <div id="fade-overlay"></div>
+  <img id="side-image" src="Images/Celnet.png" alt="Celnet Systems" />
+  <img id="under-logo" src="Images/clnt.png" alt="logo" />
+  <div id="boot-screen"></div>
+  <input id="command-input" type="text" placeholder=" " />
+
+  <script>
+    // Wait for user interaction to play the audio
+    const audio = document.getElementById("background-audio");
+
+    // Set the volume to 50% (0.5)
+    audio.volume = 0.1;
+
+    function playAudio() {
+      audio.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
+      // Remove the event listener after the audio starts playing
+      document.removeEventListener("click", playAudio);
+      document.removeEventListener("keydown", playAudio);
+    }
+
+    // Add event listeners for user interaction
+    document.addEventListener("click", playAudio);
+    document.addEventListener("keydown", playAudio);
+
+    const bootText = [
+      "Celnet Systems",
+      "EXY-SDLBAC ™ F399-I INTERFACE BETA 0.6.6 ",
+      "CPU: DIVV 2.2.0 INT 170K-CORE 18-50000K CPU # 9.90GHz",
+      " ",
+      "Total Memory: 2.5PB",
+      " ",
+      "Detected Devices...",
+      "SDLBK-NRL 110.518",
+      "UFD 9.0 Silicon-Power16GPMAP",
+      "ADV-HID 2.20: SDLBK-HID 6.0",
+      " ",
+      "Loading Device Drivers...",
+      "SDLBK-NRL 110.518: ................ OK",
+      "AVD-HID 2.20: ................ OK",  
+      " ",
+      "Checking Neural Interface ............... OK",
+      " ",
+      "Initializing...................................... Done",
+      " ",      
+      "Waiting for command input...",
+      "Use Define or Help for list of commands."
+    ];
+
+    const asciiArt = [
+      "  _________ ",
+      " /         \\ ",
+      "|   O   O   |",
+      "|     ^     |",
+      " \\__|__|___/ ",
+    ];
+
+    const definitions = {
+      "boot": "Boot into VennOS.",
+      "help": "Provides a list of commands useable by this terminal.",
+      "define": "Explains the command requested.",
+      "login": "Provides login screen to access data.",
+      "commissions": "Provides information on commissions.",
+      "about": "Provides information about the system.",
+      "contact": "Provides contact information.",
+      "shutdown": "Shuts down the system.",
+      "Caldera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "Dana": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.", 
+      "Vera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "project_spiral": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+    };
+
+    const commands = {
+      "Dana": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "help": "Available commands: help, define, login, about, contact, commissions, boot, shutdown",
+      "login": { url: "login.html" },
+      "about": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
+      "contact": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
+      "commissions": { url: "https://github.com/Jaybirdnerd/jaybirdnerd.github.io/tree/main" },
+      "define": "Usage: define <term>. Example: define Help.",
+      "Caldera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "Vera": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "project_spiral": "UNAUTHORIZED - ADMIN PERMISSION REQUIRED.",
+      "boot": { url: "https://jaybirdnerd.github.io/home" }, 
+      "shutdown": { url: ""},
+    };
+
+    const normalizedCommands = {};
+    Object.keys(commands).forEach((key) => {
+      normalizedCommands[key.toLowerCase()] = commands[key];
+    });
+
+    const bootScreen = document.getElementById("boot-screen");
+    const commandInput = document.getElementById("command-input");
+    commandInput.style.display = "none"; // Initially hide the command input
+    let currentLine = 0;
+
+    let keySequence = [];
+    const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight"];
+
+    function checkKeySequence(event) {
+      keySequence.push(event.key);
+
+      // Konami Kode, used for debugging, not a intended feature.
+      if (keySequence.length > konamiCode.length) {
+        keySequence.shift();
+      }
+
+      // Check if the sequence matches the Konami Code
+      if (keySequence.join(",") === konamiCode.join(",")) {
+        keySequence = []; // Reset the sequence
+        finishTyping(); // Trigger the immediate finish of text typing
+      }
+    }
+
+    function finishTyping() {
+      // Immediately display all remaining lines of bootText
+      while (currentLine < bootText.length) {
+        typeLine(bootText[currentLine], null, false);
+        currentLine++;
+      }
+
+      // Show the input field for commands
+      commandInput.style.display = "block";
+      commandInput.focus();
+    }
+
+    document.addEventListener("keydown", checkKeySequence);
+
+    function typeLine(line, callback, appendToLastLine = false) {
+      let div;
+
+      // Create a new <div> or append to the last line
+      if (appendToLastLine) {
+        div = bootScreen.lastElementChild;
+      } else {
+        div = document.createElement("div");
+        bootScreen.appendChild(div);
+      }
+
+      let charIndex = 0;
+
+      // Function to type characters one by one
+      function typeChar() {
+        if (charIndex < line.length) {
+          div.textContent += line[charIndex];
+          charIndex++;
+          setTimeout(typeChar, 50); // Typing speed
+
+          // Scroll to the bottom of the boot screen
+          bootScreen.scrollTop = bootScreen.scrollHeight;
+        } else {
+          if (callback) {
+            setTimeout(callback, 500); // Delay before the next line
+          }
+        }
+      }
+
+      typeChar();
+    }
+
+    function startTyping() {
+      if (currentLine < bootText.length) {
+        typeLine(bootText[currentLine], () => {
+          currentLine++;
+          startTyping(); // Continue typing the next line
+        });
+      } else {
+        // Show the input field for commands after typing finishes
+        setTimeout(() => {
+          commandInput.style.display = "block";
+          commandInput.focus();
+        }, 500); // Add a slight delay after the last line finishes
+      }
+    }
+
+    // Start typing automatically
+    startTyping();
+
+    function fadeToBlackAndRedirect(url) {
+      const fadeOverlay = document.getElementById("fade-overlay");
+      fadeOverlay.style.opacity = "1"; // Start the fade-in
+      fadeOverlay.style.pointerEvents = "auto"; // Block interactions during the fade
+
+      // Redirect to the URL after the fade effect completes
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000); // Match the duration of the fade effect (1 second)
+    }
+
+    // Update the command input logic to use the normalized commands
+    commandInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const input = commandInput.value.trim().toLowerCase(); // Convert input to lowercase
+        const [command, ...args] = input.split(" ");
+        const term = args.join(" ");
+
+        if (normalizedCommands[command]) {
+          const response = normalizedCommands[command];
+          if (command === "define") {
+            // Handle the define command
+            if (term && definitions[term]) {
+              typeLine(`${term}: ${definitions[term]}`, null, false);
+            } else if (!term) {
+              typeLine("Usage: define <term>. Example: define cpu", null, false);
+            } else {
+              typeLine(`No definition found for: ${term}`, null, false);
+            }
+          } else if (command === "shutdown") {
+            // Handle the shutdown command
+            const fadeOverlay = document.getElementById("fade-overlay");
+            fadeOverlay.style.opacity = "1"; // Make the screen fully black
+            fadeOverlay.style.pointerEvents = "auto"; // Block interactions
+          } else if (typeof response === "string") {
+            // Display the response for the entered command
+            typeLine(response, null, false);
+          } else if (response.url) {
+            // Trigger the fade-out effect and redirect
+            fadeToBlackAndRedirect(response.url);
+          }
+        } else {
+          // Display an error message for unknown commands
+          typeLine(`Unknown command: ${command}`, null, false);
+        }
+        commandInput.value = ""; // Clear the input field
+      }
+    });
+  </script>
+</body>
+</html>
